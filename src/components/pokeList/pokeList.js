@@ -78,34 +78,32 @@ export default class PokeList extends Component{
 
   render() {
     return (
-      <Col xs={7} sm={8} md={7} lg={7} className="poke-list-div">
-        <h1 id="title-catalog" className="mt-3">PokéCatálogo</h1>
-        <Container fluid className="poke-list-container pt-3">
-
-            { 
-              (this.state.pokeNameList === undefined) ? 
-                <img src={loading} alt="loading"/>
-                : 
-                <>
-                  <Row xs={12} style={{display: 'block', margin:'25px 0'}}>
+      <Col xs={7} sm={8} md={7} lg={7} className="poke-list-div px-3">
+          <h1 id="title-catalog" className="mt-3">PokéCatálogo</h1>
+          <Container fluid className="poke-list-container pt-3 px-4">
+              { 
+                (this.state.pokeNameList === undefined) ? 
+                  <img src={loading} alt="loading"/>
+                  : 
+                  <>
+                    <Row xs={12} style={{display: 'block', margin:'25px 0'}}>
+                      {this.getPageButtons()}
+                    </Row>
+                    <Row className="poke-list-row my-2"> 
+                      {
+                        this.getArrayForPage().map( (name) => {
+                          return (
+                            <Col xs={12} sm={6} md={6} lg={4} xl={3} key={name}>
+                              <PokeCard pokeName={name} pokeTypesIcons={this.state.pokeTypesIcons} key={name}/>
+                            </Col>
+                          )
+                        })
+                      }
+                    </Row>
                     {this.getPageButtons()}
-                  </Row>
-                  <Row className="poke-list-row my-2"> 
-                    {
-                      this.getArrayForPage().map( (name) => {
-                        return (
-                          <Col xs={12} sm={6} md={6} lg={4} xl={3} key={name}>
-                            <PokeCard pokeName={name} pokeTypesIcons={this.state.pokeTypesIcons} key={name}/>
-                          </Col>
-                        )
-                      })
-                    }
-                  </Row>
-                  {this.getPageButtons()}
-                </>
-            }
-        </Container>
-
+                  </>
+              }
+          </Container>
       </Col>
     );
   }
