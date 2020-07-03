@@ -101,7 +101,7 @@ export default class SideCart extends Component {
                   onClick={this.handleClickDelBtn} 
                   style={{
                     backgroundColor: 'red',
-                    opacity: this.state.canDelete ? '100%' : '50%', 
+                    opacity: this.state.canDelete ? '100%' : '30%', 
                     color: 'white',
                     fontWeigth: '700',
                     border: 'none'}} 
