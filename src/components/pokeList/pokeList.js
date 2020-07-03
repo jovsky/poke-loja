@@ -16,7 +16,7 @@ export default class PokeList extends Component{
       filters: { },
       curPage: 1,
       limit: 24
-    }
+    };
    }
   
   componentDidMount() {
@@ -79,7 +79,7 @@ export default class PokeList extends Component{
   render() {
     return (
       <Col xs={7} sm={8} md={7} lg={7} className="poke-list-div">
-        <h1 className="mt-3">PokéCatálogo</h1>
+        <h1 id="title-catalog" className="mt-3">PokéCatálogo</h1>
         <Container fluid className="poke-list-container pt-3">
 
             { 
@@ -87,7 +87,9 @@ export default class PokeList extends Component{
                 <img src={loading} alt="loading"/>
                 : 
                 <>
-                  {this.getPageButtons()}
+                  <Row xs={12} style={{display: 'block', margin:'25px 0'}}>
+                    {this.getPageButtons()}
+                  </Row>
                   <Row className="poke-list-row my-2"> 
                     {
                       this.getArrayForPage().map( (name) => {

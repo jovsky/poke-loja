@@ -19,6 +19,9 @@ export default function cartItems(prevState = [], action) {
       const newState = prevState.filter( item => item.code !== action.code);
       return newState;
     }
+    case 'CLEAR_LIST': {
+      return [];
+    }
     default:
       return prevState;
   }

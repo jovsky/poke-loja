@@ -188,7 +188,6 @@ function intersection() {
   const discarded = [];
 
   const lists = arguments;
-  console.log('lists;::', lists)
 
   let numNotEmpty = 0, index = -1;
   for(let i in arguments) {

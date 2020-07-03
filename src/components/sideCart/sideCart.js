@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './style.css'
-import { Col, Row, Container, Button } from 'react-bootstrap';
+import { Col, Row, Container, Button, Modal } from 'react-bootstrap';
 import store from './../../redux/store/store'
 import cartIcon from './../../asserts/images/cart-ball.png'
 
@@ -8,7 +8,7 @@ function formatMoney(float) {
   const int = parseInt(float);
   const strInt = (int).toString()
   let decimal = ((float - int) * 100).toFixed(0);
-  if (decimal === "0") decimal += "0"
+  if (decimal.length === 1) decimal += "0"
 
 
   let newStr = "";
@@ -31,19 +31,20 @@ export default class SideCart extends Component {
       items: [],
       totalPriceNum: 0,
       totalPriceStr: "0,00",
-      canDelete: false
+      canDelete: false,
+      showModal: false
     }
   }
 
   async componentDidMount() {
-    store.subscribe( () => {
+    store.subscribe(() => {
       this.setState({
         items: store.getState().cartItems
       });
       this.updateElements();
     });
     this.setState({
-          items: []
+      items: []
     })
     store.dispatch({
       type: "LOAD_ITEMS",
@@ -54,9 +55,9 @@ export default class SideCart extends Component {
   }
 
   updateElements = () => {
-    setTimeout( () => {
+    setTimeout(() => {
       let total = 0;
-      this.state.items.map( item => total += item.priceNum);
+      this.state.items.map(item => total += item.priceNum);
       this.setState({
         totalPriceNum: total,
         totalPriceStr: formatMoney(total),
@@ -77,60 +78,90 @@ export default class SideCart extends Component {
     })
   }
 
+  handleBuy = (action) => {
+    if (action === 'show')
+      this.setState({ showModal: true });
+    else if (action === 'close') {
+      this.setState({ showModal: false });
+      store.dispatch({
+        type: "CLEAR_LIST",
+      })
+    }
+  }
+
+  // clearList = () => {
+  //   store.dispatch({
+  //     type: "CLEAR_LIST",
+  //   })
+  // }
+
   render() {
 
     return (
       <Col xs={5} sm={4} md={3} lg={3} className="poke-cart-div">
-        <Row id="cart-title-col" className="py-2">
-          <Col xs={6}>
+        <Row id="cart-title-row" className="py-2">
+          <Col xs={8} md={6}>
             <h1 id="cart-title-text">Carrinho</h1>
           </Col>
-          <Col xs={3}>
-            <img src={cartIcon} height={'60px'} alt="cart-ball"/>
+          <Col xs={2} md={3}>
+            <img src={cartIcon} height={'45px'} alt="cartn-ball" />
           </Col>
         </Row>
 
-          {/** DELETE ITEM BUTTON */}
+        {/** DELETE ITEM BUTTON */}
         <Row style={{
-                display: this.state.items.length > 0 ? 'flex':'none',
-                flexDirection: 'row'}}>
-          <Col xs={{spane: 2, offset: 8}}>
-            <Button 
-                  size={'sm'} 
-                  id="del-item-btn"
-                  onClick={this.handleClickDelBtn} 
-                  style={{
-                    backgroundColor: 'red',
-                    opacity: this.state.canDelete ? '100%' : '30%', 
-                    color: 'white',
-                    fontWeigth: '700',
-                    border: 'none'}} 
-                  width={'20px'}>
-                    <span role="img" aria-label="del-item">↓🗑️</span>
+          display: this.state.items.length > 0 ? 'flex' : 'none',
+          flexDirection: 'row'
+        }}>
+          <Col xs={{ spane: 2, offset: 8 }}>
+            <Button
+              size={'sm'}
+              id="del-item-btn"
+              onClick={this.handleClickDelBtn}
+              style={{
+                backgroundColor: 'red',
+                opacity: this.state.canDelete ? '100%' : '30%',
+                color: 'white',
+                fontWeigth: '700',
+                border: 'none'
+              }}
+              width={'20px'}>
+              <span role="img" aria-label="del-item">↓🗑️</span>
             </Button>
           </Col>
         </Row>
         <Container fluid className="poke-cart-container">
-        {
-          this.state.items.map( item => {
-            return (
-              <Row 
-                    key={item.code} 
-                    onClick={this.state.canDelete ? () =>{this.handleClickDelItem(item.code) }: ''} 
-                    className="cart-item-row"
-                    style={{
-                      backgroundColor: this.state.canDelete ? 'rgb(255,0,0,0.1)' : 'transparent',
-                      cursor: this.state.canDelete ? 'pointer' : 'auto'
-                    }}>
-                <Col xs={1} id="item-quantity">{item.quantity}x </Col>
-                <Col xs={9} lg={5} id="item-poke-name">{item.name}</Col>
-                <Col xs={1} id="item-shiny">{(item.shiny) ? "★" : ""}</Col>
-                <Col xs={12} lg={5} id="item-price">R$ {item.priceStr}</Col>
-              </Row>
-            )
-          })
-        }
+          {
+            this.state.items.map(item => {
+              return (
+                <Row
+                  key={item.code}
+                  onClick={this.state.canDelete ? () => { this.handleClickDelItem(item.code) } : ''}
+                  className="cart-item-row"
+                  style={{
+                    backgroundColor: this.state.canDelete ? 'rgb(255,0,0,0.1)' : 'transparent',
+                    cursor: this.state.canDelete ? 'pointer' : 'auto'
+                  }}>
+                  <Col xs={1} id="item-quantity">{item.quantity}x </Col>
+                  <Col xs={9} lg={5} id="item-poke-name">{item.name}</Col>
+                  <Col xs={1} id="item-shiny">{(item.shiny) ? "★" : ""}</Col>
+                  <Col xs={12} lg={5} id="item-price">R$ {item.priceStr}</Col>
+                </Row>
+              )
+            })
+          }
 
+        </Container>
+        <Row id="total-price-row">
+          <Col xs={12} md={2}>Total </Col>
+          <Col xs={12} md={10} style={{ color: 'rgb(255,56,92)' }}>R$ {this.state.totalPriceStr}</Col>
+        </Row>
+        {
+          this.state.items.length > 0 ?
+            <Button id="buy-btn" onClick={() => { this.handleBuy('show') }} >
+              Comprar
+            </Button> : ''
+        }
 
         {/* <div class="card">
           <div class="card-header">
@@ -145,15 +176,46 @@ export default class SideCart extends Component {
           </div>
         </div> */}
 
+        {/** MODAL OBRIGADO */}
+        <Modal show={this.state.showModal} onHide={() => { this.handleBuy('close') }}>
+          <Modal.Header closeButton>
+            <Modal.Title>Obrigado, treinador!</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>
+            <Col className="modal-thanks-div" xs={12}>
+            <img 
+            src={'https://25.media.tumblr.com/tumblr_lh013m9gyV1qgjv7io1_500.gif'} 
+            height="100px"
+            alt="thanks"></img>
+            <p>
+              Seus Pokémon foram comprados com sucesso :)
+            </p>
+            </Col>
+            <Container className="px-4">
+              {this.state.items.map(item => {
+                return (
+                  <Row key={item.code} className="cart-item-row-buy">
+                    <Col xs={1} id="item-quantity">{item.quantity}x </Col>
+                    <Col xs={9} lg={5} id="item-poke-name">{item.name}</Col>
+                    <Col xs={1} id="item-shiny">{(item.shiny) ? "★" : ""}</Col>
+                    <Col xs={12} lg={5} id="item-price">R$ {item.priceStr}</Col>
+                  </Row>
+                )
+              })}
+            </Container>
+            <Row id="total-price-row">
+              <Col xs={12} md={2}>Total </Col>
+              <Col xs={12} md={10} style={{ color: 'rgb(255,56,92)' }}>R$ {this.state.totalPriceStr}</Col>
+            </Row>
 
-        </Container>
-        <Row id="total-price-row">
-          <Col xs={3}>Total </Col>
-          <Col xs={9} style={{color: 'rgb(255,56,92)'}}>R$ {this.state.totalPriceStr}</Col></Row>
-        {
-          this.state.items.length > 0 ? 
-            <Button className="buy-btn">Comprar</Button> : ''
-        }
+          </Modal.Body>
+          <Modal.Footer>
+            <Button id="buy-btn" onClick={() => { this.handleBuy('close') }}>
+              Comprar mais
+            </Button>
+          </Modal.Footer>
+        </Modal>
+
       </Col>
     );
 

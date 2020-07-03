@@ -39,18 +39,24 @@ export default class FilterMenu extends Component{
     })
   }
 
-  handleSelect_T1 = (event) => {
-    store.dispatch({
-      type: "SET_TYPE_1_FILTER",
-      type_1: event === "-" ? null : event
-    })
-  }
+  // handleSelect_T1 = (selected) => {
+  //   store.dispatch({
+  //     type: "SET_TYPE_1_FILTER",
+  //     type_1: selected === "-" ? null : selected
+  //   })
+  // }
 
-  handleSelect_T2 = (event) => {
-    store.dispatch({
-      type: "SET_TYPE_2_FILTER",
-      type_2: event === "-" ? null : event
-    })
+  handleSelect_Type = (selected, which) => {
+    if (which === 1)
+      store.dispatch({
+        type: "SET_TYPE_1_FILTER",
+        type_1: selected === "-" ? null : selected
+      })
+    else if (which === 2)
+      store.dispatch({
+        type: "SET_TYPE_2_FILTER",
+        type_2: selected === "-" ? null : selected
+      })
   }
   resetSelectsT1T2 = () => {
     store.dispatch({
@@ -64,7 +70,7 @@ export default class FilterMenu extends Component{
       region: event === "-" ? null : event
     })
   }
-  resetSelectsRegions = () => {
+  resetSelectRegion = () => {
     store.dispatch({
       type: "RESET_REGION_FILTER",
     })
@@ -72,18 +78,21 @@ export default class FilterMenu extends Component{
 
 
   render() {
+
     return (
       <Col xs={12} md={2} className="filter-menu-div">
-        <div className="filter-menu-div-filter">
-          <h3>Filtrar pesquisa</h3>
-        </div>
-        <Container fluid id="type-filter-div" >
+        <Container fluid >
+        <Row id="filter-title-row" className="py-3">
+          <Col xs={12}>
+            <h1 id="filter-title-text">Filtros de Busca</h1>
+          </Col>
+        </Row>
           <Row className="px-0">
           {/**  TYPE FILTER */}
-          <Col xs={4} md={12} id="filter-div" >
+          <Col xs={4} md={12} className="filter-div" >
             <Row className="mx-0">
             <Col xs={12} style={{fontSize: '16px'}}>
-              <p>Filtrar por tipo</p>
+              <p>Por Tipos</p>
             </Col>
             <Col xs={12} lg={5} className="px-0 mx-0">
               <Dropdown>
@@ -96,7 +105,7 @@ export default class FilterMenu extends Component{
                     return <Dropdown.Item 
                               eventKey={name} 
                               key={name+"_T1"}
-                              onSelect={this.handleSelect_T1}
+                              onSelect={(selected) => {this.handleSelect_Type(selected, 1)}}
                               >{name}</Dropdown.Item>
                   })}
                 </Dropdown.Menu>
@@ -113,7 +122,7 @@ export default class FilterMenu extends Component{
                     return <Dropdown.Item 
                             eventKey={name} 
                             key={name+"_T2"}
-                            onSelect={this.handleSelect_T2}
+                            onSelect={ (selected) => {this.handleSelect_Type(selected, 2)}}
                             >{name}</Dropdown.Item>
                   })}
                 </Dropdown.Menu>
@@ -126,10 +135,10 @@ export default class FilterMenu extends Component{
           </Col>
 
           {/**  REGION FILTER */}
-          <Col xs={4} md={12} id="filter-div" >
-            <Row id="row-types-div" className="mx-0" >
+          <Col xs={4} md={12} className="filter-div" >
+            <Row className="mx-0" >
             <Col xs={12} style={{fontSize: '16px'}}>
-              <p>Filtrar por região</p>
+              <p>Por Região</p>
             </Col>
             <Col xs={12} lg={10} className="px-0 mx-0">
               <Dropdown>
@@ -148,8 +157,8 @@ export default class FilterMenu extends Component{
                 </Dropdown.Menu>
               </Dropdown>
             </Col>
-            <Col xs={12} lg={1} className="px-0 ml-1" id="div-reset-types">
-              <Button onClick={this.resetSelectsT1T2} id="reset-button">×</Button>
+            <Col xs={12} lg={1} className="px-0 ml-1">
+              <Button onClick={this.resetSelectRegion} id="reset-button">×</Button>
             </Col>
             </Row>
           </Col>
