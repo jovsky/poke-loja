@@ -1,0 +1,91 @@
+.poke-cart-div {
+  background-color: rgb(255, 255, 255);
+  font-weight: 800;
+}
+
+#cart-title-text {
+  position: absolute;
+  bottom: 0;
+  font-size: 25px;
+  right: 0rem; 
+  cursor: auto;
+}
+
+#del-item-btn {
+  padding: 2px 4px;
+  font-size: 14px;
+  min-width: 40px;
+  margin: 3px;
+}
+
+#del-text {
+  font-size: 12px;
+  white-space: nowrap;
+  padding-top: 10px;
+  padding-right: 0px;
+  text-align: right;
+  color: red
+}
+
+#del-item-btn:active, #del-item-btn:focus{
+  box-shadow: none;
+}
+
+.poke-cart-container {
+  background-color: rgb(255, 255, 255);
+  display: block;
+  border-top: 1px solid rgb(175, 175, 175);
+  border-bottom: 1px solid rgb(175, 175, 175);
+  font-size: 12px
+}
+
+.cart-item-row {
+  border-bottom: 1px solid rgb(211, 211, 211);
+  background-color: white;
+  min-height: 30px;
+  padding: 6px 0;
+}
+.cart-item-row > div {
+  /* border-right: 1px solid rgb(255, 95, 95); */
+  padding-left: 0;
+  padding: 0;
+  text-align: left;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+#item-quantity {
+  overflow: visible;
+}
+#item-poke-name {
+  padding-left: 10px;
+}
+#item-shiny {
+  top: 0;
+  font-size: 14px;
+  color: blue
+}
+#item-price {
+  text-align: right;
+  overflow: visible;
+}
+
+.poke-cart-div h1 {
+  color: rgb(0, 0, 0)
+}
+
+#total-price-row {
+  text-align: right;
+  justify-content: right;
+  align-content: right;
+  text-justify: right;
+  padding: 0;
+  right: 0;
+  font-size: 20px;
+  font-weight: 700;
+  margin-top: 15px;
+}
+
+.buy-btn {
+  margin-top: 15px;
+}

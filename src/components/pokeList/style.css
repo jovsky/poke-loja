@@ -1,0 +1,64 @@
+.poke-list-div {
+  background-color: rgb(255, 0, 128);
+  padding: 0;
+}
+
+.poke-list-container {
+  background-color: rgb(126, 29, 87);
+  padding: 0;
+  margin: 0;
+}
+
+.poke-list-container {
+  background-color: rgb(56, 5, 114);
+  min-height: 100vh;
+  padding: 0;
+  margin: 0;
+  border-radius: 15px;
+}
+
+.card-col {
+  background-color: darkturquoise;
+  margin-bottom: .5rem;
+  border: 1px solid black;
+}
+
+.row-list {
+  background-color: yellowgreen;
+  width: 110%;
+  margin-bottom: 5px;
+}
+
+.column-list {
+  padding: 10px;
+  background-color: steelblue;
+}
+
+#page-btn {
+  background-image: url('./../../asserts/images/page-btn.png');
+  background-repeat: no-repeat;
+  background-color: transparent;
+  border: none;
+  width: 30px;
+  height: 30px;
+  margin: 20px 5px;
+  padding: 0;
+  font-family: fantasy;
+  font-size: 14px;
+  font-weight: 0;
+  transition: 300ms;
+}
+
+#page-btn.active {
+  background-image: url('./../../asserts/images/page-btn-active.png');
+}
+
+#page-btn:hover{
+    transform: rotate(25deg);
+}
+
+#page-btn:focus, #page-btn:active {
+  box-shadow: none;
+  outline: none;
+  border: none;
+}

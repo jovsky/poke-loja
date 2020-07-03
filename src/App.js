@@ -1,24 +1,29 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import PokeList from './components/pokeList/pokeList'
+import FilterMenu from './components/filterMenu/filterMenu';
+import SideCart from './components/sideCart/sideCart';
+import { Row, Container } from 'react-bootstrap';
+
 
 function App() {
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      
+      <div className="top-menu"></div>
+
+      <Container fluid className="">
+        <Row className="main-div">
+          <FilterMenu/>
+          <PokeList/>
+          <SideCart/>
+        </Row>
+      </Container>
+
+      <div className="cart-resume"></div>
+
+
     </div>
   );
 }
