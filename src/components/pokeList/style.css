@@ -8,8 +8,8 @@
 .poke-list-container {
   background-color: rgb(56, 5, 114);
   min-height: 100vh;
-  padding: 0;
-  margin: 0;
+  padding: 0 .3rem;
+  margin: 0 .3rem;
   border-radius: 15px;
   padding-bottom: 15px;
 }
