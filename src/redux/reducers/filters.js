@@ -15,11 +15,6 @@ export default function filters(state = {}, action) {
         ...state,
         type_2: action.type_2
       }
-    case 'RESET_REGION_FILTER':
-      return {
-        ...state,
-        region: null
-      }
 
     case 'SET_REGION_FILTER':
       return {
@@ -27,11 +22,29 @@ export default function filters(state = {}, action) {
         region: action.region
       }
 
+    case 'SET_SEARCH_NAME':
+      return {
+        ...state,
+        searchName: action.searchName
+      }
+
+    case 'RESET_REGION_FILTER':
+      return {
+        ...state,
+        region: null
+      }
+
     case 'RESET_TYPE_FILTER':
       return {
         ...state,
         type_1: null,
         type_2: null
+      }
+
+    case 'RESET_SEARCH_NAME':
+      return {
+        ...state,
+        searchName: null
       }
       
     default:

@@ -97,15 +97,3 @@ form {
   text-align: left;
 }
 
-#input-check {
-  margin-top: 2px;
-}
-
-#input-qtd {
-  margin-top: -3px;
-  height: 25px;
-  width: 50px;
-  font-size: 12px;
-  padding-left: 5px;
-  padding-right: 3px;
-}

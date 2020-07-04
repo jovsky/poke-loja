@@ -5,6 +5,7 @@
 
 .App {
   text-align: center;
+  font-family: futura-LT;
 }
 
 .App-logo {
@@ -42,12 +43,29 @@
   color: #61dafb;
 }
 
+#nav {
+  background-color: rgb(24, 24, 24);
+}
+
 .main-div {
   background-color: rgba(80, 7, 163, 0.979);
   border-left: 1px solid rgba(0, 0, 0, 0.26);
   color: black;
   display: flex;
-  flex-direction: row;
-  font-family: futura-LT;
+  flex-direction: row; 
 }
 
+
+footer {
+  background-color: rgba(45, 4, 92, 0.979);
+  color: white;
+  padding: 15px;
+}
+
+footer a{
+  color: white;
+  text-decoration: underline;
+}
+footer a:hover{
+  color: rgb(215, 147, 255);
+}

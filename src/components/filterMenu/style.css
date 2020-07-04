@@ -4,11 +4,9 @@
   border-bottom: 2px dashed grey;
 }
 
-.filter-menu-div-title {
-  text-shadow: 1.5px 1.5px 2px rgba(0, 0, 0, 0.15);
-  width: 100%;
-  padding: 3.5vh 0;
-  display: block;
+.filter-title {
+  text-shadow: 2px 2px 2px rgb(0, 0, 0);
+  color: white;
 }
 
 #filter-title-row {
@@ -20,29 +18,14 @@
   font-size: 20px;
   right: 0rem; 
   cursor: auto;
-  text-shadow: 1.5px 1.5px 2px rgba(0, 0, 0, 0.15);
-  color: black;
-  text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.445);
 }
 
-#dropdown-basic {
-  width: 95%;
-  height: 25px;
-  background-color: rgb(255, 255, 255);
-  color: black;
-  border: 1px solid rgb(177, 177, 177);
-  padding: 0;
-  padding-left: .25rem;
-  font-size: 12px;
-  text-align: left;
-}
 
 .filter-div {
   padding: 0;
   border-bottom: 1px solid grey;
-  padding: 20px 0;
+  padding: 10px 0;
 }
-
 
 .filter-div a{
   color: black;
@@ -53,19 +36,44 @@
   font-size: 14px;
 }
 
-#reset-button {
-  color: white;
-  width: 20px;
+#filter-input {
+  height: 26px;
+  background-color: rgb(255, 255, 255);
+  color: black;
+  border: 1px solid rgb(177, 177, 177);
   padding: 0;
+  padding-left: .25rem;
+  font-size: 12px;
+  text-align: left;
+  margin-top: 1px;
+  width: 99%;
+}
+
+#search-button {
+  color: white;
   text-align: center;
   border: none;
-  background-color: red;
-  font-weight: 700;
-  line-height: 0px;
+  font-size: 12px;
+  outline: none;
+  background-color: rgb(55, 13, 95);
   text-align: center;
-  padding-top: 0px;
-  top: 0;
-  height: 20px;
+  border-radius: 0 3px 3px 0;
+  padding: 1px;
+  height: 100%;
+  width: 100%;
+}
+#search-button:active, #search-button:focus {
+  outline: none;
+}
+
+#reset-button {
+  color: white;
+  padding: 0;
+  border: none;
+  background-color: transparent;
+}
+#reset-button:active, #reset-button:focus {
+  outline: none;
 }
 
 

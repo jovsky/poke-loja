@@ -196,14 +196,14 @@ export default class SideCart extends Component {
                 return (
                   <Row key={item.code} className="cart-item-row-buy">
                     <Col xs={1} id="item-quantity">{item.quantity}x </Col>
-                    <Col xs={9} lg={5} id="item-poke-name">{item.name}</Col>
+                    <Col xs={5} id="item-poke-name">{item.name}</Col>
                     <Col xs={1} id="item-shiny">{(item.shiny) ? "★" : ""}</Col>
-                    <Col xs={12} lg={5} id="item-price">R$ {item.priceStr}</Col>
+                    <Col xs={5} id="item-price">R$ {item.priceStr}</Col>
                   </Row>
                 )
               })}
             </Container>
-            <Row id="total-price-row">
+            <Row id="total-price-row-buy">
               <Col xs={12} md={2}>Total </Col>
               <Col xs={12} md={10} style={{ color: 'rgb(255,56,92)' }}>R$ {this.state.totalPriceStr}</Col>
             </Row>

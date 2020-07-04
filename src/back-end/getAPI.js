@@ -131,18 +131,23 @@ export async function getFilteredPokeList(filters) {
     const pokeNameList = await pokeData.results.map(item => item.name)
     ret =  await pokeNameList
   }
-
+  else if(filters.name !== null && filters.name !== undefined) {
+    try{
+      const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${filters.name}`, options)
+      const pokeData = await response.json();
+      ret = [pokeData.name];
+    } catch (error) {
+      console.log('Erro', error)
+      ret = [];
+    }
+  } 
   else {
     const allReturns = await getPreFilteredData(filters);
     const pokeNames = intersection(...allReturns)
-    console.log('back....')
     ret = await pokeNames;
   }
 
-  setTimeout( async() => {
-
-  }, 1000)
-
+  setTimeout( async () => {}, 1000)
   return ret
 
 }
@@ -218,10 +223,8 @@ function intersection() {
           discarded.push(cur)
       }
       else {
-        console.log(' ????? ')
         discarded.push(cur)
       }
-      console.log('.')
       
     }
   }
@@ -265,7 +268,6 @@ function intersection() {
   //   }
   // }
 
-  console.log("resulttt:", result)
   return result;
 }
 

@@ -145,8 +145,8 @@ export default class PokeCard extends Component {
                   <Col xs={4}>
                     <Form.Label> Shiny </Form.Label>
                   </Col>
-                  <Col className="input-div">
-                    <Form.Check id="input-check" className="shiny-input" onChange={this.handleCheckShiny} />
+                  <Col className="input-div mt-0 pt-0">
+                    <Form.Check onChange={this.handleCheckShiny} />
                   </Col>
                 </Form.Row>
                 <Form.Row>
@@ -155,9 +155,15 @@ export default class PokeCard extends Component {
                   </Col>
                   <Col className="input-div">
                     <Form.Control 
-                      id="input-qtd"
                       value={this.state.quantity} 
                       className="input-sm" 
+                      style={{
+                        height: '25px',
+                        width: '50px',
+                        fontSize: '12px',
+                        paddingLeft: '5px',
+                        paddingRight: '3px'
+                      }}
                       type="number"
                       min="1"
                       max="100"
