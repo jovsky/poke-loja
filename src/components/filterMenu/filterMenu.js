@@ -121,6 +121,10 @@ export default class FilterMenu extends Component{
                 <Form.Control 
                     id="filter-input"
                     placeholder="Digite aqui" 
+                    onKeyPress={(event) => {
+                      if (event.key==='Enter') 
+                        this.handleSearchName()
+                    }}
                     style={{borderRadius:"3px 0 0 3px"}}>
                 </Form.Control>
               </Col>
