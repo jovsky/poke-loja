@@ -89,34 +89,7 @@ export default class FilterMenu extends Component{
           </Row>
           <Row className="px-0">
 
-            {/**  NAME SEARCH */}
-          <Col xs={4} md={12} className="filter-div" >
-            <Row className="mx-0" >
-            <Col xs={12} style={{fontSize: '16px'}}>
-              <p>Por Região</p>
-            </Col>
-            <Col xs={12} lg={10} className="px-0 mx-0">
-              <Dropdown>
-                <Dropdown.Toggle variant="success" id="dropdown-basic">
-                  {this.state.region || "Nenhum"}
-                </Dropdown.Toggle>
-
-                <Dropdown.Menu>
-                  {this.state.regionNames.map( (name) => {
-                    return <Dropdown.Item 
-                              eventKey={name} 
-                              key={name}
-                              onSelect={this.handleSelect_Region}
-                              >{name}</Dropdown.Item>
-                  })}
-                </Dropdown.Menu>
-              </Dropdown>
-            </Col>
-            <Col xs={12} lg={1} className="px-0 ml-1">
-              <Button onClick={this.resetSelectRegion} id="reset-button">×</Button>
-            </Col>
-            </Row>
-          </Col>
+       
 
             {/**  TYPE FILTER */}
             <Col xs={4} md={12} className="filter-div" >

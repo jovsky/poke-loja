@@ -21,6 +21,8 @@
   right: 0rem; 
   cursor: auto;
   text-shadow: 1.5px 1.5px 2px rgba(0, 0, 0, 0.15);
+  color: black;
+  text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.445);
 }
 
 #dropdown-basic {
