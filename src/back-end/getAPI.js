@@ -124,20 +124,18 @@ export async function getPokeData(pokeName) {
 export async function getFilteredPokeList(filters) {
 
   let ret;
-
   if (filters === null) {
     const response = await fetch(`https://pokeapi.co/api/v2/pokemon?limit=151`, options)
     const pokeData = await response.json();
     const pokeNameList = await pokeData.results.map(item => item.name)
     ret =  await pokeNameList
   }
-  else if(filters.name !== null && filters.name !== undefined) {
+  else if(filters.searchName !== null && filters.searchName !== undefined) {
     try{
-      const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${filters.name}`, options)
+      const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${filters.searchName}`, options)
       const pokeData = await response.json();
       ret = [pokeData.name];
     } catch (error) {
-      console.log('Erro', error)
       ret = [];
     }
   } 
