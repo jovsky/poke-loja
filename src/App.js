@@ -32,7 +32,7 @@ function App() {
       <footer>
         João Vítor de Melo @ 2020
         <br/>
-        <a href="https://about.me/jvmelop" target="_blank">{"> Sobre mim e Contato <"}</a>
+        <a href="https://about.me/jvmelop" target="_blank" rel="noopener noreferrer" >{"> Sobre mim e Contato <"}</a>
         <br/>
         Hiring Coders | Gama Academy
       </footer>
