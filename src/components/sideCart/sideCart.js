@@ -99,7 +99,7 @@ export default class SideCart extends Component {
   render() {
 
     return (
-      <Col xs={5} sm={4} md={3} lg={3} className="poke-cart-div">
+      <Col xs={5} sm={4} md={2} lg={2} className="poke-cart-div">
         <Row id="cart-title-row" className="py-2">
           <Col xs={8} md={6}>
             <h1 id="cart-title-text">Carrinho</h1>

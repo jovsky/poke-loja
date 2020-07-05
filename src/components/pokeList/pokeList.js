@@ -79,7 +79,7 @@ export default class PokeList extends Component{
 
   render() {
     return (
-      <Col xs={7} sm={8} md={7} lg={7} className="poke-list-div">
+      <Col xs={7} sm={8} md={8} className="poke-list-div">
         <Container fluid className="px-3 mx-0">
           <h1 id="title-catalog" className="mt-3">PokéCatálogo</h1>
           <Container fluid className="poke-list-container pt-3 px-4">

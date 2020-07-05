@@ -93,8 +93,8 @@ export async function getPokeData(pokeName) {
         price += stat.base_stat
       price /= 6;
 
-      const LEG = (obj.legendary) ? 7 : 1;
-      obj.price_default = ((price ** (3)) * LEG / 100).toFixed(2);
+      const LEG = (obj.legendary) ? 5 : 1;
+      obj.price_default = ((price ** (3)) * LEG / 10000).toFixed(2);
       obj.price_shiny = (obj.price_default * 20).toFixed(2);
   
       return obj;

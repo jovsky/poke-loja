@@ -106,7 +106,7 @@ export default class FilterMenu extends Component{
           <Col xs={4} md={12} className="filter-div px-0" >
             <Row className="mx-0" >
               <Col xs={12} style={{fontSize: '16px'}} className='filter-title'>
-                <p>Nome do Pokémon</p>
+                <p>Nome</p>
               </Col>
               <Col xs={10} className="px-0 mx-0" >
                 <Form.Control 
