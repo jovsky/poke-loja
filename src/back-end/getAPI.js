@@ -72,34 +72,23 @@ export async function getPokeData(pokeName) {
       const pokeData = await response.json();
   
       const {
-        // abilities, 
-        // forms, 
-        // height, 
         id, 
         name, 
-        // base_experience,
         sprites, 
         stats, 
         types, 
-        // weight
       } = pokeData;
   
       const obj = {
-        // abilities, 
-        // forms, 
-        // height, 
-        // id, 
         name: toTitleCase(name),
         sprites, 
         stats, 
         types, 
-        // weight
       };
   
       obj.legendary = LEGENDARIES_IDS.includes(id);
   
       let price = 0;
-      // price = base_experience;
       for(let stat of stats)
         price += stat.base_stat
       price /= 6;
@@ -110,16 +99,6 @@ export async function getPokeData(pokeName) {
   
       return obj;
 }
-
-// export async function getCompletePokeList() {
-//   const response = await fetch(`https://pokeapi.co/api/v2/pokemon`, options)
-//   const pokeData = await response.json();
-//   const list = [];
-//   for (let key in pokeData.results) {
-//     list.push(pokeData.results[key].name);
-//   }
-//   return list;
-// }
 
 export async function getFilteredPokeList(filters) {
 
@@ -145,7 +124,8 @@ export async function getFilteredPokeList(filters) {
     ret = await pokeNames;
   }
 
-  setTimeout( async () => {}, 1000)
+  setTimeout( async () => {}, 100)
+
   return ret
 
 }
@@ -226,45 +206,6 @@ function intersection() {
       
     }
   }
-
-  // let result = [];
-  // let lists;
-
-  // console.log('args', arguments)
-
-  // let numNotEmpty = 0, index = -1;
-  // for(let i in arguments) {
-  //   if(arguments[i].length > 0) {
-  //     numNotEmpty++;
-  //     index = i;
-  //   }
-  // }
-  // if (numNotEmpty === 1 && index !== -1)
-  //   return arguments[index];
-  
-  // console.log('>>>>', numNotEmpty, index)
-  //lists = arguments;
-
-  // for(let i = 0; i < lists.length; i++) {
-
-  //   let currentList = lists[i];
-  //   for(let y = 0; y < currentList.length; y++) {
-
-  //     let currentValue = currentList[y];
-  //     if(result.indexOf(currentValue) === -1) {
-  //       let existsInAll = true;
-  //       for(let x = 0; x < lists.length; x++) {
-  //         if(lists[x].indexOf(currentValue) === -1) {
-  //           existsInAll = false;
-  //           break;
-  //         }
-  //       }
-  //       if(existsInAll) {
-  //         result.push(currentValue);
-  //       }
-  //     }
-  //   }
-  // }
 
   return result;
 }

@@ -31,15 +31,6 @@ export default class FilterMenu extends Component{
       });
     });
 
-    // store.dispatch({
-    //   type: "LOAD_FILTER",
-    //   filters: {
-    //     type_1: this.state.type_1,
-    //     type_2: this.state.type_2,
-    //     region: this.state.region,
-    //     name:
-    //   }
-    // })
   }
 
 

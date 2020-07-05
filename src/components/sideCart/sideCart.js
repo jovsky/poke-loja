@@ -43,15 +43,16 @@ export default class SideCart extends Component {
       });
       this.updateElements();
     });
+
+    let localList;
+
+    localList = JSON.parse( localStorage.getItem('cartItems') ) || []
+
+    console.log('getState', store.getState().cartItems)
     this.setState({
-      items: []
+      items: localList
     })
-    store.dispatch({
-      type: "LOAD_ITEMS",
-      items: this.state.items
-    })
-    // window.store = store;
-    // console.log(store.getState())
+
   }
 
   updateElements = () => {
@@ -136,7 +137,7 @@ export default class SideCart extends Component {
               return (
                 <Row
                   key={item.code}
-                  onClick={this.state.canDelete ? () => { this.handleClickDelItem(item.code) } : ''}
+                  onClick={this.state.canDelete ? () => { this.handleClickDelItem(item.code) } : ()=>{}}
                   className="cart-item-row"
                   style={{
                     backgroundColor: this.state.canDelete ? 'rgb(255,0,0,0.1)' : 'transparent',
@@ -158,23 +159,11 @@ export default class SideCart extends Component {
         </Row>
         {
           this.state.items.length > 0 ?
-            <Button id="buy-btn" onClick={() => { this.handleBuy('show') }} >
+            <Button id="buy-btn" className="mt-3" onClick={() => { this.handleBuy('show') }} >
               Comprar
             </Button> : ''
         }
 
-        {/* <div class="card">
-          <div class="card-header">
-            <a class="card-link" data-toggle="collapse" href="#collapseOne">
-              Collapsible Group Item #1
-            </a>
-          </div>
-          <div id="collapseOne" class="collapse show">
-            <div class="card-body">
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-            </div>
-          </div>
-        </div> */}
 
         {/** MODAL OBRIGADO */}
         <Modal show={this.state.showModal} onHide={() => { this.handleBuy('close') }}>

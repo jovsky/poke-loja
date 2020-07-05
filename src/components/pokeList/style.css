@@ -14,6 +14,10 @@
   box-shadow: 0 0 10px rgba(255, 255, 255, 0.363);
 }
 
+.poke-list-container > img {
+  margin-top: 15vh;
+}
+
 #title-catalog {
   position: relative;
   font-size: 3.5vw;

@@ -5,6 +5,7 @@ import { Col, Row, Container, Button } from 'react-bootstrap';
 import './style.css'
 import store from '../../redux/store/store'
 import loading from './../../asserts/images/big-loading.gif'
+import notFound from './../../asserts/images/not-found.png'
 
 export default class PokeList extends Component{
 
@@ -84,8 +85,14 @@ export default class PokeList extends Component{
           <Container fluid className="poke-list-container pt-3 px-4">
               { 
                 (this.state.pokeNameList === undefined) ? 
-                  <img src={loading} alt="loading"/>
-                  : 
+                  <img src={loading} alt="loading"/> : 
+                  (this.state.pokeNameList.length === 0) ? 
+                  <>
+                    <img src={notFound} alt="loading" /> 
+                    <p style={{color: 'white', fontSize: '16px'}}>
+                      Nenhum resultado foi encontrado :(
+                    </p>
+                  </> : 
                   <>
                     <Row xs={12} style={{display: 'block', margin:'25px 0'}}>
                       {this.getPageButtons()}

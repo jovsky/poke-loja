@@ -25,7 +25,7 @@ function App() {
         <Row className="main-div">
           <FilterMenu />
           <PokeList />
-          <SideCart />
+          <SideCart/>
         </Row>
       </Container>
 
