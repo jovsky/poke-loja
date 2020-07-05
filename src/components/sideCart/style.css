@@ -87,8 +87,9 @@
   text-justify: right;
   padding: 0;
   right: 0;
-  font-size: 20px;
+  font-size: 16px;
   margin-top: 15px;
+  font-weight: 600;
   text-shadow: 2px 2px 2px rgb(0, 0, 0);
   color: white;
 }
@@ -122,4 +123,12 @@
   min-height: 18px;
 }
 
+#buy-btn {
+  background-color: rgb(255, 0, 128); 
+  border: none;
+  box-shadow: 2px 2px 2px rgba(0,0,0,.5);
+}
 
+#buy-btn:hover {
+  background-color: rgb(255, 59, 157); 
+}
