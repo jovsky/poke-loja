@@ -48,7 +48,6 @@ export default class SideCart extends Component {
 
     localList = JSON.parse( localStorage.getItem('cartItems') ) || []
 
-    console.log('getState', store.getState().cartItems)
     this.setState({
       items: localList
     })
